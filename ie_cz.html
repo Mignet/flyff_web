@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>FlyFFCn 充值中心</title>
+	<meta name="keywords" content="FlyFFCn 充值中心">
+	<meta name="description" content="FlyFFCn 充值中心"> 
+	<link rel="stylesheet" type="text/css" href="./index_files/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./index_files/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="./index_files/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="./index_files/util.css">
+	<link rel="stylesheet" type="text/css" href="./index_files/main.css">
+    <script src="./index_files/jquery-1.7.2.min.js"></script>
+</head>
+
+<body>
+
+	<div class="limiter">
+		<div class="bg container-login100">
+			<div class="wrap-login100">								
+				<span class="login100-form-title">FlyFFCn 充值中心</span>								
+      <div class="modal-body">
+            <div class="form-group">
+                <div >
+                        <select id="qu" name="qu" class="form-control selectpicker" data-size="5" title="请选择区服" required="">
+    						<option value="1">塔罗牌的召唤</option>                        
+                        </select>
+                </div>
+  <div>
+    <span>&nbsp;&nbsp;</span><span >请输入游戏角色ID【角色ID是7位数字】</span>
+  </div>
+  <div >
+    <span></span><input type="text" value="" id="uid" class="form-control" style="border-style: solid;" placeholder="请输入游戏角色ID[比如0000001]">
+  </div>
+
+  <div>
+    <span>&nbsp;&nbsp;</span><span >请确认您的充值金额[整数金额]</span>
+  </div>
+    <div >
+        <input type="number" id="chargenum" class="form-control selectpicker" style="border-style: solid;" placeholder="请输入充值金额[整数金额]">
+    </div>
+  <div>
+     <input type="button" class="btn btn-danger btn-block" value="充值" id="chargebtn" onclick="incharge();">
+    </div> 
+  <hr>
+  <div>
+  <span>&nbsp;&nbsp;充值比例: </span><span style="color:red">1:100 点券</span>
+    </div>
+    <div>
+  <span>&nbsp;&nbsp;<span style="color:blue">充值金额会累计，累计越多奖励越多</span>
+  </div>
+  <span>&nbsp;&nbsp;<span style="color:red">单次充值任意额度即可触发首充奖励</span>
+ <div>
+ 
+ <hr>
+     
+
+
+
+<div class="txt1 text-center">
+		<span>FlyFFCn &copy：<a href="http://fly.v5ent.com/sm.html">http://fly.v5ent.com</a></span>
+</div>
+<script type="text/javascript">
+    ((function() {
+        var callbacks = [],
+            timeLimit = 50,
+            open = false;
+        setInterval(loop, 1);
+        return {
+            addListener: function(fn) {
+                callbacks.push(fn);
+            },
+            cancleListenr: function(fn) {
+                callbacks = callbacks.filter(function(v) {
+                    return v !== fn;
+                });
+            }
+        }
+        function loop() {
+            var startTime = new Date();
+            debugger;
+            if (new Date() - startTime > timeLimit) {
+                if (!open) {
+                    callbacks.forEach(function(fn) {
+                        fn.call(null);
+                    });
+                }
+                open = true;
+                window.stop();
+                //console.log('感谢您的关注，为了您的信息安全，V5娱乐不建议您查看控制台！！！');
+                window.location.reload();
+            } else {
+                open = false;
+            }
+        }
+    })()).addListener(function() {
+        window.location.reload();
+    });
+</script>
+<script type="text/javascript">
+    function incharge(){
+        var uid = $("#uid").val();
+        var money = $("#chargenum").val()|0;
+        var patt1 = /^[0-9]+$/;
+        if(!uid){  
+            alert("角色ID不可为空"); return
+        }
+        if(!patt1.test(uid)){
+            alert("角色ID不合法"); return
+        }
+        if(!money || money==0){  alert("充值金额不对"); return}
+
+        var ulr ="http://m.v5ent.com/alipay/alipay-web.html?gamecode=flyffcn&servercode=s1&account="+uid+"&amount="+money;
+            window.open(ulr, "newwindow", "height=600, width=800, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no");
+    }
+</script>
+</body>
+</html>

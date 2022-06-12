@@ -1,0 +1,9 @@
+function openModal(id){let modal=document.getElementById(id);modal.style.display="block";}
+function closeModal(e,id){let modal=document.getElementById(id);if(e.target.id==id){modal.style.display="none";}}
+function rememberme(box){box.checked=!box.checked;}
+function changeActive(element){if(element.innerHTML.trim()!=""){element.innerHTML="";}
+else{element.innerHTML='<div class="active"></div>';}}
+function spotlightButton(element){let parent=element.parentNode;for(let i=0;i<parent.children.length;i++){parent.children[i].innerHTML="";}
+element.innerHTML='<div class="active"></div>';}
+$('#backtotop').click(function(){$("html, body").animate({scrollTop:0},600);return false;});$(document).ready(()=>{let dropdownToggles=document.getElementsByClassName('dropdown-toggle');for(let dropdownToggle of dropdownToggles){dropdownToggle.addEventListener('mouseover',()=>{dropdownToggle.parentElement.children[1].style.display='block';});dropdownToggle.addEventListener('mouseleave',()=>{dropdownToggle.parentElement.children[1].style.display='none';});dropdownToggle.parentElement.children[1].addEventListener('mouseover',()=>{dropdownToggle.parentElement.children[1].style.display='block';});dropdownToggle.parentElement.children[1].addEventListener('mouseleave',()=>{dropdownToggle.parentElement.children[1].style.display='none';});}
+var acc=document.getElementsByClassName("accordion");var i;for(i=0;i<acc.length;i++){acc[i].addEventListener("click",function(){this.classList.toggle("accordion-active");var panel=this.nextElementSibling;if(panel.style.maxHeight){panel.style.maxHeight=null;}else{panel.style.maxHeight=panel.scrollHeight+"px";}});}});$(window).on("load",function(){$(".loader-wrapper").fadeOut("slow");document.body.style.overflow="auto";});
